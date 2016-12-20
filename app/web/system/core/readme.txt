@@ -1,5 +1,8 @@
-heart of the system.
+## Synopsis
 
-this is where the scripts that manage the other scripts and system files will go.
+The system/core is heart of the system. The core folder is where main system classes are stored and that extend out to build the rest of the system around.
 
-also system services like output functions, data normalization, bindings, sessions, system state management, cron / schedule tasks, etc. will be controlled and managed from here.
+## Code Example
+
+To be filled in later. 
+
