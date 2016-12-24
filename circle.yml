@@ -1,0 +1,35 @@
+machine:
+    services:
+        - docker
+    environment:
+        VERBOSE: 1
+ 
+general:
+    branches:
+        only:
+            - master
+            - release
+            - proxyfeature2
+
+test:
+    override:
+        - make test
+
+deployment:
+    prod:
+        branch: release
+        commands:
+            - make stack
+            - tools/bin/deploy --stack prod stack --task-env SERVER_HOST=personnelink.cloud TICKET_DOMAIN=personnelink.cloud
+    stage:
+        branch: master
+        commands:
+            - make stack
+            - tools/bin/deploy --stack stage stack
+    proxyfeature2:
+        branch: proxyfeature2
+        commands:
+            - make stack
+            - >
+                PERSONNELINK_STACK_PASSPHRASE=$PERSONNELINK_STACK_PASSPHRASE_STAGE
+                tools/bin/hosting deploy stage2

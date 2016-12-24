@@ -1,0 +1,2 @@
+*/5 * * * * /tasks/hello.sh
+00 1 * * * php /tasks/web-stats/fetch-logs.php

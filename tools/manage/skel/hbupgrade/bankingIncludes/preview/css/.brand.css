@@ -1,0 +1,172 @@
+/* 
+    Document   :brand
+    Created on :Jan 18, 2013, 9:53:17 AM
+    Author     :mark
+    Description:
+        Define colors / shading, fonts -- FO
+*/
+
+body {
+  background-color:#eaeaea; 
+  color:#303030; 
+  font:.8em/1.5 helvetica, verdana, sans-serif;
+  font-family:helvetica, verdana, sans-serif;
+}
+
+/* ** Top Bar ** */
+#topbar {
+  font:85%/1.2 helvetica, verdana, sans-serif; 
+  background-color:#01707B;
+  color:#FFFFFF;
+}
+
+.cu-primary-color {
+  background-color:#01707B;
+  color:#FFFFFF;
+}
+.cu-secondary-color {
+  background-color:#76B84B;
+  color:#FFFFFF;
+}
+#topbar span.top-title p {
+  font:140%/1.5 helvetica, verdana, sans-serif;
+  font-weight:bold;
+}
+
+.button {
+  color:#333333;
+}
+.button.item-active{
+  color:#76B84B;
+}
+.button:hover { 
+ background-color:#fff;
+}
+#action_box {
+  background-color:#76B84B;
+  color:#fff;
+}
+#logo_wrapper {
+  position:absolute;
+  width:165px;
+  height:80px;
+  left:20px;
+  top:0px;
+  overflow:visible;
+  padding:0 5px 5px 5px;
+}
+#logo_wrapper .logo_content {
+  background:#FFFFFF url("https://cucommon.s3.amazonaws.com/person/images/personnelink_logo.png") no-repeat 0 center;
+  background-size:160px 65px;
+  box-shadow:5px 5px 5px #666666;
+  height:100%;
+  width:100%;
+}
+#personnelinkBannerArea {
+  background-color:#333333;
+  border:5px solid #333333;  
+  height:60px;
+}
+.showPersonnelinkBanner #logo_wrapper{
+  top:70px;
+}
+.showPersonnelinkBanner #personnelink-notify-container {
+  top:70px;
+}
+
+/* ** CONTENT LAYOUT ** */
+#workspace {
+  position:relative; 
+  margin:15px 0 70px 0; 
+  padding-right:15px;
+}
+#submenu {
+  float:left; 
+  width:215px; 
+  margin-right:20px; 
+  padding-left:0px;
+}
+
+#content {
+  padding:20px; 
+  margin-left:232px; 
+  overflow:visible; 
+  margin-left:0; 
+  overflow:auto;
+  font:1.2em/1.2 helvetica, verdana, sans-serif;
+  border:1px solid #afafaf;
+  background:#fff;
+  color:#000000;
+}
+#content h1 {
+  background-color:#303030; 
+  color:#fff;
+}
+
+#submenu ul.menu li a {
+  border-bottom:1px solid #cfcfcf; 
+  color:#303030;
+}
+#submenu ul.menu li#submenu-active a {
+  background-color:#76B84B; 
+  color:#fff;
+}
+#submenu ul.menu li a:hover, 
+#submenu ul.menu li a:active, 
+#submenu ul.menu li a:focus {
+  color:#df0000;
+}
+#submenu ul.menu ul li a, 
+#submenu ul.menu li ul li a {
+  background-color:#e3e3e3;
+}
+
+#submenu ul.menu ul li a:hover, 
+#submenu ul.menu ul li a:active, 
+#submenu ul.menu ul li a:focus, 
+#submenu ul.menu li#submenu-active ul li a:hover, 
+#submenu ul.menu li#submenu-active ul li a:active, 
+#submenu ul.menu li#submenu-active ul li a:focus {
+  color:#df0000;
+}
+
+/* ** FOOTER ** */
+
+#footer {
+  color:#FFFFFF;
+  background-color:#01707B;
+  border-top:2px solid #76B84B;
+}
+#footer a {
+  color:#FFF;
+}
+#footer a:hover, 
+#footer a:active, 
+#footer a:focus {
+  color:#FFFFFF;
+}
+
+
+/* ** MISCALLANEOUS ** */
+
+/* SET SOME SIZE OPTIONS FOR HCU ACCOUNTS */
+#acctList {
+  font-size:.8em;
+  
+}
+
+.personnelink-formStatus > ul {
+  list-style-type:none;
+  margin-left:20px;              
+}
+.k-invalid-msg .k-personnelink-msg {
+  display:none;
+}
+
+.k-invalid-msg:hover .k-personnelink-msg { 
+  display:block; 
+  position:absolute; 
+  margin-top:-50px; 
+  margin-left:0px; 
+  z-index:100000; 
+}

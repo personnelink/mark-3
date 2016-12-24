@@ -1,0 +1,224 @@
+BODY { font-family: arial;
+       font-size: 10pt;
+       background: #FFFFFF }
+td { font-family: arial, sans-serif }
+.ahd { background: #EEEEEE;
+         font-weight: bold;
+         color: #990000;
+         font-family: arial, sans-serif }
+.hdr { background: #CCCCCC;
+         font-size: 10pt;
+         font-weight: bold;
+         font-family: arial, sans-serif }
+.dtl { background: #FFFFCC;
+         font-size: 10pt;
+         font-family: arial, sans-serif }
+.usu { font-size: 10pt;
+       font-family: arial, sans-serif }
+.bar { background: #666699;
+         font-size: 14pt;
+         font-weight: bold;
+         color: #FFFFFF;
+         font-family: arial, sans-serif }
+.menutop { background: #666699;
+         font-size: 10pt;
+         color: #FFFFFF;
+         font-weight: bold;
+         text-decoration: none;
+         font-family: arial, sans-serif }
+.msg { background: #FFFFFF;
+         font-family: arial, sans-serif;
+         font-size: 10pt;
+         color: #990000 }
+.small {  font-size: 10px; color: #666; background-color: #FFFFCC }
+.small2 { font-size: 10px; color: #FFF; background-color: #666699 }
+
+.even { background: #DDDDDD; color: #000000 }
+.odd { background: #EEEEEE; color: #000000 }
+.smbar { font-size: 10px; color: #FFF; background-color: #666699 }
+.smtext {  font-size: 12px; color: #666; background-color: #FFFFCC }
+.survtext { font-size: 10px; color: #000000; background: #FFFFFF }
+
+.matcenter { background: #666699; 
+             height: 3px; }
+.matthin { background: #666699; 
+           height: 1px; 
+           width: 1px; 
+           font-family: arial, helvetica; 
+           font-size: 1px; 
+           color: white }
+.matleft { background: #666699; 
+       height: 3px; 
+       width: 3px }
+.matright { background: #666699; 
+       height: 3px; 
+       width: 2px }
+.ulc { background: #666699 url(/fi/CULOGIN/ul666699.gif); 
+         background-repeat: no-repeat; 
+         background-position: top left; 
+         height: 5px;
+         width: 5px }
+.urc { background: #666699 url(/fi/CULOGIN/ur666699.gif); 
+         background-repeat: no-repeat; 
+         background-position: top right; 
+         height: 5px;
+         width: 5px }
+.llc { background: #666699 url(/fi/CULOGIN/ll666699.gif); 
+         background-repeat: no-repeat; 
+         background-position: bottom left; 
+         height: 5px;
+         width: 5px }
+.lrc { background: #666699 url(/fi/CULOGIN/lr666699.gif); 
+         background-repeat: no-repeat; 
+         background-position: bottom right; 
+         height: 5px;
+         width: 5px }
+.bartitle { font-family: arial, helvetica;
+         font-size: 15px;
+         text-align: left; 
+         text-indent: 3em; 
+         color: white ; background-color: #666699}
+.empty { font-family: arial, helvetica;
+         font-size: 2px;
+         text-align: left; 
+         color: white }
+.hdrl { background: #CCCCCC;
+         font-family: arial, helvetica;
+         font-size: 12px;
+         text-align: left ; color: #000000 }
+.hdrc { background: #CCCCCC;
+         font-family: arial, helvetica;
+         font-size: 12px;
+         text-align: center ; color: #000000 }
+.hdrr { background: #CCCCCC;
+         font-family: arial, helvetica;
+         font-size: 12px;
+         text-align: right ; color: #000000 }
+.usu { font-family: arial, helvetica;
+       font-size: 12px }
+.usul { font-family: arial, helvetica; 
+       font-size: 12px; 
+       text-align: left }
+.usur { font-family: arial, helvetica;
+       font-size: 12px; 
+       text-align: right }
+.usuc { font-family: arial, helvetica;
+       font-size: 12px; 
+       text-align: center }
+.dtll { background: #FFFFCC;
+         font-family: arial, helvetica;
+         font-size: 12px; 
+         text-align: left ; color: #000 }
+.dtlc { background: #FFFFCC;
+         font-family: arial, helvetica;
+         font-size: 12px; 
+         text-align: center ; color: #000 }
+.dtlr { background: #FFFFCC;
+         font-family: arial, helvetica;
+         font-size: 12px; 
+         text-align: right ; color: #000 }
+a { color: #0000FF;
+text-decoration : underline;
+}
+a:hover { color: #0000FF;
+text-decoration : none;
+}
+a.cklink { color: #FFFFFF;
+text-decoration : underline;
+}
+a.cklink:hover { color: #FFFFFF;
+text-decoration : none;
+}
+.bigred { font-family: arial, helvetica, sans-serif;
+         font-size: larger;
+         font-weight: bold;
+         color: #FF0000 }
+.posty {
+font-family: arial, sans-serif; 
+}
+.postpage {
+font-family: arial, sans-serif; 
+background:#FF9;
+}
+.posty ul {
+padding:0; 
+margin:0;
+border:0;
+list-style-type: none;
+}
+.posty ul li a, .posty ul li a:visited {
+display:block;
+}
+
+.posty ul li dl {
+visibility:hidden;
+position:absolute;
+}
+
+
+.posty dl {width:350px; padding:0 0 20px 0; height:auto;}
+.posty dt {margin:0; padding:5px; font-size:1.4em; font-weight:bold; color: #000; text-align:left;}
+.posty dd {margin:0; padding:5px 15px; color:#000; font-size:.9em; border:1px solid #CC9; border-width:1px; background:#FF9;}
+.posty dd p {padding:0; margin:10px 0; line-height:1.3em;}
+
+/* specific to non IE browsers and IE7 first with IE5.5 and IE6 second */
+.posty ul li:hover,
+.posty ul li a:hover {
+color:#000; 
+position:relative;
+cursor: pointer;
+cursor:hand;
+}
+
+.posty ul li:hover dl,
+.posty ul li a:hover dl {
+visibility:visible;
+color:#FF9;
+top:12px;
+left:-250px;
+cursor:default;
+}
+
+.posty ul.pending li:hover dl,
+.posty ul.pending li a:hover dl {
+visibility:visible;
+color:#FF9;
+top:0px;
+left:100px;
+cursor:default;
+}
+
+.posty ul li:hover dl em,
+.posty ul li a:hover dl em {
+display:block;
+position:absolute;
+left:-250px;
+top:12px;
+width:36px; 
+height:36px;
+}
+
+.posty ul.pending li:hover dl em,
+.posty ul.pending li a:hover dl em {
+display:block;
+position:absolute;
+left:100px;
+top:0px;
+width:36px; 
+height:36px;
+}
+
+.posty ul li:hover dl a,
+.posty ul li a:hover dl a {
+height:0.8em;
+color:#606;
+background:transparent;
+text-decoration:underline;
+display:inline;
+}
+
+.posty ul li:hover dl a:hover,
+.posty ul li a:hover dl a:hover {
+text-decoration:none;
+background:transparent;
+}
