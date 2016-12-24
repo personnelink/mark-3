@@ -1,0 +1,14 @@
+FROM __PROJECT__-app-base:__BRANCH__
+
+RUN composer require phpunit/phpunit:~5.3 && \
+    ln -s ${COMPOSER_VENDOR_DIR}/bin/phpunit /usr/local/bin/phpunit
+
+COPY conf/test/apache2/sites/ /etc/apache2/sites-enabled/
+COPY conf/test/apache2/mods/ /etc/apache2/mods-enabled/
+COPY conf/test/php/ /usr/local/etc/php/conf.d/
+COPY bootstrap/test/ /bootstrap/
+
+COPY web/ /var/www/html/
+COPY test/unit /test
+
+ENTRYPOINT ["phpdbg", "-qrr", "/usr/local/bin/phpunit", "/test"]

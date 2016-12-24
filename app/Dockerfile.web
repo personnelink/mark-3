@@ -1,0 +1,35 @@
+FROM __PROJECT__-app-base:__BRANCH__
+
+RUN apt-get update && \
+    apt-get install -y \
+        libapache2-mod-perl2 \
+        pwgen \
+        libpg-perl \
+        vim \
+        libapache2-mod-rpaf && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+RUN echo "alias ll='ls $LS_OPTIONS -l'" >> /root/.bashrc
+
+RUN composer require aws/aws-sdk-php
+
+ARG DEFAULT_SERVER_HOST=null
+ENV \
+    ADMIN_IP_ACL=0.0.0.0 \
+    DEVMODE=0 \
+    REQUIRE_ENCRYPTION=0 \
+    SERVER_HOST=$DEFAULT_SERVER_HOST \
+    SITE_PATH=/var/www/site \
+    TICKET_DOMAIN=
+
+COPY conf/web/apache2/sites/ /etc/apache2/sites-enabled/
+COPY conf/web/apache2/mods/ /etc/apache2/mods-enabled/
+COPY conf/web/php/ /usr/local/etc/php/conf.d/
+COPY bootstrap/web/ /bootstrap/
+
+COPY web/ /var/www/html/
+
+COPY .build /BUILD
+
+CMD ["/bootstrap/apache-start"]

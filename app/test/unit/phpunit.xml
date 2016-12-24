@@ -1,0 +1,8 @@
+<phpunit>
+    <testsuites>
+        <testsuite name="Personnelink Application">
+            <directory>core</directory>
+            <directory>lib</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>

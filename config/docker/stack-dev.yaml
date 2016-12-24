@@ -1,0 +1,20 @@
+version: '2'
+
+services:
+    web:
+        environment:
+            DEVMODE: 1
+        volumes:
+            - '../../app/web:/var/www/html'
+            - '../..:/project'
+    db:
+        volumes:
+            - '../..:/project'
+        ports:
+            - ${DEV_DB_PORT}:5432
+    sched:
+        volumes:
+            - '../../sched/tasks:/tasks'
+            - '../..:/project'
+        ports:
+            - ${DEV_SCHED_PORT}:80
