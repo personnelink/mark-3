@@ -1,1 +1,0 @@
-location for server scripts

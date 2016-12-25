@@ -1,1 +1,0 @@
-location for static client side fonts

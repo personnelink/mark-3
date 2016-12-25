@@ -11,7 +11,7 @@ default: all
 ######################
 #   Env Overrides    #
 ######################
-VERBOSE ?= 1
+VERBOSE ?= 0
 
 
 TOOLS := tools/bin

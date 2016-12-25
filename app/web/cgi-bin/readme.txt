@@ -1,1 +1,0 @@
-location for cgi server scripts
