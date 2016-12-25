@@ -1,0 +1,1 @@
+content and tools location for core components shared by all portals (common)

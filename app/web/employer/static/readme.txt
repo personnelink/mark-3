@@ -1,0 +1,1 @@
+location for static html content (this location visible to public and via url)
