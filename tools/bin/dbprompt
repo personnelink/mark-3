@@ -1,0 +1,22 @@
+#!/bin/bash
+
+. $(dirname $0)/build.env
+
+DB_CONTAINER=$(db-container)
+if [ -z "$DB_CONTAINER" ] ; then
+    echo Database container not running: $DB_IMAGE 1>&2
+    exit 1
+fi
+NET=$(container-network $DB_CONTAINER)
+
+: ${EDITOR:=vim}
+
+exec docker run -i $DOCKER_TTY_ARG --rm \
+    --link $DB_CONTAINER:db \
+    --net $NET \
+    -e EDITOR=$EDITOR \
+    -e PGHOST=db \
+    -e PGUSER=postgres \
+    -v $ROOT:/project \
+    ${DB_IMAGE} \
+    sh -c "PGPASSWORD=\$POSTGRES_PASSWORD PGDATABASE=\$POSTGRES_DB psql $@"

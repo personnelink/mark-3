@@ -1,0 +1,7 @@
+#!/bin/bash
+
+PROJECT_DIR=$(basename $(cd $(dirname $0)/../.. ; pwd))
+CLEAN_NAME=$(echo $PROJECT_DIR |
+             tr '[:upper:]' '[:lower:]' |
+             sed -e 's/[^a-z0-9]*//g')
+echo $USER-$CLEAN_NAME

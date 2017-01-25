@@ -1,0 +1,61 @@
+#!/bin/bash
+
+ROOT=$(pwd)/$(dirname $0)/../..
+
+cd $ROOT
+
+PROJECT=$(./tools/bin/projectname)
+CONTAINER_PREFIX=$(echo $PROJECT | sed -e 's/.*-\(.*\)/\1/')
+BRANCH=$(git rev-parse --abbrev-ref HEAD)
+APP_WEB_IMAGE=${PROJECT}-app-web:${BRANCH}
+SCHED_IMAGE=${PROJECT}-sched:${BRANCH}
+DB_IMAGE=${PROJECT}-db:${BRANCH}
+: ${WEB_PORT:=8000}
+: ${DEV_DB_PORT:=54321}
+: ${DEV_SCHED_PORT:=7080}
+
+export WEB_PORT DEV_DB_PORT DEV_SCHED_PORT APP_WEB_IMAGE SCHED_IMAGE DB_IMAGE
+
+if [ -z "$DOCKER_MACHINE_NAME" ] ; then
+    HOST=localhost
+else
+    HOST=$(docker-machine ip $DOCKER_MACHINE_NAME)
+fi
+URL="http://$HOST:$WEB_PORT/"
+
+if [ "$DEVMODE" = 1 ] ; then
+    EXTRA="-f config/docker/stack-dev.yaml"
+else
+    EXTRA=
+fi
+
+if [ "$AUTOOPEN" = 1 ] ; then
+	case "$OPENMODE" in
+		admin) URL="${URL}admbin/main.prg" ;;
+    	staffing) URL="${URL}staffing/pinkLogin.prg?cu=SCRUBS" ;;
+		*) ;;
+    esac
+	(
+	    sleep 5
+	    echo
+	    echo -e "\tOpening: $URL"
+	    echo -e "\r\tNOTE: You may need to hit reload"
+	    echo -e "\r"
+	    sleep 2
+	    open $URL
+	) &
+fi
+
+if [ "$1" == "up" ] ; then
+    echo -e "\nRunning Personnelink at: $URL\n"
+elif [ "$1" == "open" ] ; then
+    echo "Opening Personnelink from: $URL"
+    exec open $URL
+fi
+
+# Workaround for https://github.com/docker/compose/issues/3106
+export COMPOSE_HTTP_TIMEOUT=31536000
+
+exec docker-compose \
+    -p $CONTAINER_PREFIX \
+    -f config/docker/stack.yaml $EXTRA $@

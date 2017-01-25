@@ -1,0 +1,11 @@
+#!/bin/bash
+
+. $(dirname $0)/build.env
+
+DC=$(db-container)
+if [ -z "$DC" ] ; then
+    echo ERROR: Container \"$DB_IMAGE\" is not running. 1>&2
+    exit 1
+fi
+
+exec docker exec -i $DOCKER_TTY_ARG $DC bash $@

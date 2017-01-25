@@ -1,0 +1,28 @@
+#!/bin/bash
+
+ROOT=$(pwd)/$(dirname $0)/../..
+PROJECT=$($ROOT/tools/bin/projectname)
+BRANCH=$(cd $ROOT ; git rev-parse --abbrev-ref HEAD)
+IMAGE=${PROJECT}-app-test:$BRANCH
+
+function run() {
+    exec docker run $OPTS --rm -it -h personnelink-test $IMAGE $@
+}
+
+if [ "$1" == "--help" ] ; then
+    run --help
+    echo
+    echo
+    echo ------------------------------------------------------------------------
+    echo Personnelink Override Options:
+    echo
+    echo "  --shell          Run an interactive shell inside the test container."
+    exit 1
+fi
+
+if [ "$1" == "--shell" ] ; then
+    OPTS="--entrypoint /bin/bash"
+    shift
+fi
+
+run $@

@@ -1,0 +1,32 @@
+#!/bin/bash
+
+ROOT=$(pwd)/$(dirname $0)/../..
+PROJECT=$($ROOT/tools/bin/projectname)
+BRANCH=$(git rev-parse --abbrev-ref HEAD)
+IMAGE=${PROJECT}-cumanage-tool:${BRANCH}
+DBIMAGE=${PROJECT}-db:${BRANCH}
+
+docker build -t $IMAGE $ROOT/tools/cumanage >/dev/null
+if [ $? -ne 0 ] ; then
+    exit 1
+fi
+
+DBCONTAINER=$(docker ps -qf ancestor=$DBIMAGE)
+if [ -n "$DBCONTAINER" ] ; then
+    DBNET=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.NetworkID}}{{end}}' $DBCONTAINER)
+    EXTRA_ARGS="--link $DBCONTAINER:db --net $DBNET"
+else
+    EXTRA_ARGS=""
+fi
+
+exec docker run \
+    -v /var/run/docker.sock:/run/docker.sock \
+    -v $ROOT/home:/home \
+    $EXTRA_ARGS \
+    -e PROJECT=${PROJECT} \
+    -e BRANCH=${BRANCH} \
+    -e PGHOST=db \
+    -e PGDATABASE=personnelink_dev \
+    -e PGUSER=postgres \
+    -e PGPASSWORD=none \
+    -it $IMAGE $@

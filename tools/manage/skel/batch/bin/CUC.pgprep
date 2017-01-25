@@ -1,0 +1,18 @@
+sub preprocess {
+    open(FILE,"<ACT") || error($DMSMAIL,
+                                  $CUMAIL,
+                                  $CUNAME,
+                                  "Preprocess: Can't open ACT\n" );
+    $firstline=<FILE>;
+    close(FILE);
+    $count =(@field = split(/\t/,$firstline));
+     if ( $count == 10 ) { # Header/Trailer
+         $batch=substr($field[1],0,8);
+         $prev=$batch-1;
+         open(HDR,">$CUNAME.hdr");
+         print HDR "Prev Export ID: $prev\n";
+         print HDR "Curr Export ID: $batch\n";
+         close(HDR);
+    }
+}
+1;

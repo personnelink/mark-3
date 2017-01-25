@@ -1,0 +1,11 @@
+#!/bin/bash
+
+. $(dirname $0)/build.env
+
+C=$(sched-container)
+if [ -z "$C" ] ; then
+    echo ERROR: Container \"$SCHED_IMAGE\" is not running. 1>&2
+    exit 1
+fi
+
+exec docker exec -i $DOCKER_TTY_ARG $C bash $@

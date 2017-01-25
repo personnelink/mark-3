@@ -1,0 +1,11 @@
+#!/bin/bash
+
+. $(dirname $0)/build.env
+
+WC=$(web-container)
+if [ -z "$WC" ] ; then
+    echo ERROR: Container \"$APP_WEB_IMAGE\" is not running. 1>&2
+    exit 1
+fi
+
+exec docker exec -i $DOCKER_TTY_ARG $WC bash $@

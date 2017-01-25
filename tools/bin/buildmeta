@@ -1,0 +1,16 @@
+#!/bin/bash
+
+cd $(dirname $0)
+
+echo "Last Commit Subject: $(git log -1 --pretty=%s)"
+echo "Last Commit Author: $(git log -1 --pretty='%an <%ae>')"
+echo "Last Commit Date: $(git log -1 --pretty=%cD)"
+echo "Git Rev: $(git rev-parse HEAD)"
+echo "Git Rev Count: $(git rev-list --count HEAD)"
+echo "Git Branch: $(git rev-parse --abbrev-ref HEAD)"
+echo "Build Date: $(date)"
+echo "Build User: $USER@$(hostname)"
+echo "Project Name: $(./projectname)"
+echo "Docker $(docker info | grep Operating\ System)"
+echo "Docker Server Version: $(docker info | grep Server\ Version | cut -d " " -f 3)"
+echo "Docker Client Version: $(docker --version | cut -d " " -f 3 | cut -d , -f 1)"

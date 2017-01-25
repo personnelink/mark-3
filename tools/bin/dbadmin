@@ -1,0 +1,39 @@
+#!/bin/bash
+
+. $(dirname $0)/build.env
+
+DB_ADMIN_IMAGE=${PROJECT}-dbadmin:${BRANCH}
+DB_CONTAINER=$(db-container)
+if [ -z "$DB_CONTAINER" ] ; then
+    echo Database container not running: $DB_IMAGE
+    exit 1
+fi
+NET=$(container-network $DB_CONTAINER)
+
+if [ -z "$DOCKER_MACHINE_NAME" ] ; then
+    DOCKER_HOST=localhost
+else
+    DOCKER_HOST=$(docker-machine ip $DOCKER_MACHINE_NAME)
+fi
+URL=http://$DOCKER_HOST:9000/phppgadmin
+
+docker build $ROOT/tools/dbadmin -t $DB_ADMIN_IMAGE >/dev/null
+
+(
+    sleep 5
+    echo
+    echo -e "\tOpening: $URL"
+    echo -e "\r\tLogin: mysql:none"
+    echo -e "\r\tNOTE: You may need to hit reload"
+    echo -e "\r"
+    sleep 2
+    open $URL
+) &
+
+exec docker run -it --rm \
+    --link $DB_CONTAINER:db \
+    --net $NET \
+    --publish 9000:80 \
+    -e POSTGRES_HOST=db \
+    -e POSTGRES_DEFAULTDB=pink_dev \
+    $DB_ADMIN_IMAGE $@
