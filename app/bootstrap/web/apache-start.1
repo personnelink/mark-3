@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# if [ "$DEVMODE" = 1 ] ; then
+    echo
+    echo WARNING: Running web container in DEVMODE!
+    echo
+    INI=/usr/local/etc/php/conf.d/9000-devmode.ini
+    echo 'display_errors = On' > $INI
+    echo 'display_startup_errors = On' >> $INI
+# fi
+
+exec apache2-foreground

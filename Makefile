@@ -181,7 +181,11 @@ deploy-stage: stack
 
 deploy-prod: stack
 	$(TOOLS)/deploy --stack prod
-
+hello:
+	@echo "hello"
+	
+print-%:
+        @echo '$*=$($*)'
 
 HOMEIGNORE := \
 	README.md \

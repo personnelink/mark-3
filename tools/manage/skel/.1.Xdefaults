@@ -1,0 +1,50 @@
+! Parts (C) 1996 By Greg J. Badros <gjb@cs.duke.edu>
+! You may use this file as specified under the GNU General Public License
+
+emacs*Background: DarkSlateGray
+emacs*Foreground: Wheat
+emacs*pointerColor: Orchid
+emacs*cursorColor: Orchid
+emacs*bitmapIcon: on
+emacs*font: fixed
+emacs.geometry: 80x25
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+! xterm (and friends)
+
+XTerm*saveLines:	1500
+nxterm*saveLines:	1500
+rxvt*saveLines:	        1500
+
+XTerm*cursorColor:	blue
+XTerm*scrollBar:	true
+nxterm*cursorColor:	blue
+nxterm*scrollBar:	true
+
+xterm*fullCursor:	true
+xterm*reverseWrap:	true
+xterm*titleBar:		false
+nxterm*fullCursor:	true
+nxterm*reverseWrap:	true
+nxterm*titleBar:	false
+
+*visualBell:		true
+*scrollTtyOutput:	False
+*scrollKey:		True
+Scrollbar.JumpCursor:	True
+*numeric:		C
+*displayLang:		C
+*basicLocale:		C
+*timeFormat:		C
+*inputLang:		C
+
+*eightBitInput: 		true
+remotexterm*eightBitInput:	false
+nxterm*Cursor: xterm
+
+xterm*VT100.Translations: #override\n\
+	<KeyPress>Prior : scroll-back(1,page)\n\
+	<KeyPress>Next : scroll-forw(1,page)
+nxterm*VT100.Translations: #override\n\
+	<KeyPress>Prior : scroll-back(1,page)\n\
+	<KeyPress>Next : scroll-forw(1,page)
